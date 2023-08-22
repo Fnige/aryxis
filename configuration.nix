@@ -30,10 +30,6 @@
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   services.udev.packages = [ pkgs.kinect-audio-setup ];
 
-  programs.git = {
-    
-  };
-
   networking.hostName = "yawre-mother"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
