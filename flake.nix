@@ -25,12 +25,18 @@
 			
 			modules = [
 				./configuration.nix
-				home-manager.nixosModules.home-manager
-				{
-				home-manager.useGlobalPkgs = true;
-				home-manager.useUserPackages = true;
-				home-manager.users.fnige = import ./home.nix;
+				
+				({ home-manager, ... }: {
+					imports = [
+						home-manager.nixosModules.home-manager
+					];
+					home-manager = {
+						useGlobalPkgs = true;
+						useUserPackages = true;
+						users.fnige = import ./home.nix;
+					};
 				}
+				)
 			];
 		};
 	};  
