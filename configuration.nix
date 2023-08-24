@@ -9,11 +9,9 @@
 		[ # Include the results of the hardware scan.
 			./hardware-configuration.nix
 			./packages/media/spotify
-			./packages
 		];
 
 	aryxis.packages.spotify.enable = true;
-  aryxis.general.profile = "Fnige";
 
 	# Bootloader.
 	boot.loader = {
