@@ -14,30 +14,35 @@
 	# Flake Parts
 	flake-parts = {
 		url = "github:hercules-ci/flake-parts";
+		inputs.nixpkgs-lib.follows = "nixpkgs";
 	};
 	};
 
-	outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+	outputs = { self, nixpkgs, home-manager, flake-parts, ... }@inputs:
+		flake-parts.lib.mkFlake { inherit inputs; } {
+			flake = {
+				nixosConfigurations."yawre-mother" = nixpkgs.lib.nixosSystem {
+					system = "x86_64-linux";
+					specialArgs = inputs;
 
-		nixosConfigurations."yawre-mother" = nixpkgs.lib.nixosSystem {
-			system = "x86_64-linux";
-			specialArgs = inputs;
-			
-			modules = [
-				./configuration.nix
-				
-				({ home-manager, ... }: {
-					imports = [
-						home-manager.nixosModules.home-manager
+					modules = [
+						./configuration.nix
+					
+						({ home-manager, ... }: {
+							imports = [
+								home-manager.nixosModules.home-manager
+							];
+							home-manager = {
+								useGlobalPkgs = true;
+								useUserPackages = true;
+								users.fnige = import ./home.nix;
+							};
+						})
 					];
-					home-manager = {
-						useGlobalPkgs = true;
-						useUserPackages = true;
-						users.fnige = import ./home.nix;
-					};
-				}
-				)
+				};
+			};
+			systems = [
+				"x86_64-linux"
 			];
 		};
-	};  
 }
