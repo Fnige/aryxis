@@ -8,7 +8,10 @@
 	imports =
 		[ # Include the results of the hardware scan.
 			./hardware-configuration.nix
+      ./packages/media/spotify/spotify.nix
 		];
+
+  aryxis.packages.spotify.enable = true;
 
 	# Bootloader.
 	boot.loader = {
