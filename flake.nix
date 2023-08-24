@@ -1,5 +1,5 @@
 {
-	description = "Fnige's Nix Config (Aryxis)";
+	description = "Aryxis: Funny nix config for both Fniges and Ringlings";
 
 	inputs = {
 		# Specify the source of Home Manager and Nixpkgs.
