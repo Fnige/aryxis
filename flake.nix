@@ -35,7 +35,7 @@
 							];
 
 							aryxis.packages.spotify.enable = true;
-							
+				
 							home-manager = {
 								useGlobalPkgs = true;
 								useUserPackages = true;
