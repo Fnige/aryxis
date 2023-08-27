@@ -19,7 +19,6 @@
 
 			modules = [
 				./configuration.nix
-				./home-manager.nix
 
 				({ home-manager, ... }: {
 					imports = [
@@ -32,7 +31,7 @@
 					home-manager = {
 						useGlobalPkgs = true;
 						useUserPackages = true;
-						users.fnige = import ./home.nix;
+						users.fnige = import ./home-manager.nix;
 					};
 				})
 			];
