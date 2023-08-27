@@ -1,0 +1,5 @@
+{
+  import = [
+    .././fnige-common
+  ];
+}
