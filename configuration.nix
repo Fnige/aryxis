@@ -11,8 +11,6 @@
 			./packages/media/spotify
 		];
 
-	aryxis.packages.spotify.enable = true;
-
 	# Bootloader.
 	boot.loader = {
 		efi = {
@@ -33,7 +31,7 @@
 	environment.sessionVariables.NIXOS_OZONE_WL = "1";
 	services.udev.packages = [ pkgs.kinect-audio-setup ];
 
-	networking.hostName = "yawre-mother"; # Define your hostname.
+	networking.hostName = "verra"; # Define your hostname.
 	# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
 	# Enable networking

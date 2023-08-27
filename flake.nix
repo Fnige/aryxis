@@ -21,17 +21,21 @@
 	outputs = { self, nixpkgs, home-manager, flake-parts, ... }@inputs:
 		flake-parts.lib.mkFlake { inherit inputs; } {
 			flake = {
-				nixosConfigurations."yawre-mother" = nixpkgs.lib.nixosSystem {
+				nixosConfigurations.verra = nixpkgs.lib.nixosSystem {
 					system = "x86_64-linux";
 					specialArgs = inputs;
 
 					modules = [
 						./configuration.nix
-					
+
 						({ home-manager, ... }: {
 							imports = [
 								home-manager.nixosModules.home-manager
+								./packages/media/spotify
 							];
+
+							aryxis.packages.spotify.enable = true;
+							
 							home-manager = {
 								useGlobalPkgs = true;
 								useUserPackages = true;
